@@ -1,0 +1,2377 @@
+Loading FLAN-T5-large model
+✅ FLAN-T5-large loaded successfully
+Loading embedding models...
+✅ SentenceTransformer loaded successfully
+✅ CLIP model loaded successfully
+Initializing retrieval systems...
+Setting up FAISS systems...
+Loaded 330 text embeddings
+Loaded image embeddings for 329 segments
+Loaded 330 text embeddings
+Loaded image embeddings for 329 segments
+Setting up lexical retrieval systems...
+✅ TFIDF initialized
+Initializing BM25...
+Loaded 330 text embeddings
+✅ BM25 initialized
+Building index for faiss_text...
+FAISS text index built with 330 vectors. Setup time: 0.01s
+✅ faiss_text index built successfully
+Building index for faiss_image...
+FAISS image index built with 1202 vectors. Setup time: 0.03s
+✅ faiss_image index built successfully
+Building index for faiss_fusion...
+FAISS text index built with 330 vectors.
+FAISS image index built with 1202 vectors.
+FAISS fusion indices built. Setup time: 0.04s
+✅ faiss_fusion index built successfully
+Building index for tfidf...
+Loaded 330 segments
+TF-IDF index built with 330 documents and 3582 terms
+✅ tfidf index built successfully
+Building index for bm25...
+Improved BM25 index built with 330 documents. Setup time: 0.07s
+✅ bm25 index built successfully
+✅ Successfully initialized 5 retrieval systems
+
+=== Running full evaluation on all questions ===
+
+
+===== Testing with QA set from /content/drive/MyDrive/LLMs and RAG Systems/Assignment_5/Dataset/Questions/First_set.json =====
+
+Found 10 answerable questions
+Testing 10 questions
+
+
+==================================================
+PROCESSING QUESTION 1/10
+==================================================
+
+Question: Who is the student among the co-authors?
+
+Expected answer locations:
+  101.00s - 112.91s: "And it's joint work with Valentin Barchet, Nicolas Bousquet, Clément Dallard, and Kyle Lomer, who is..."
+
+Retrieving answer... (this may take a moment)
+
+📝 Processing query: Who is the student among the co-authors?
+Rewritten from 'Who is the student among the co-authors?' to 'Who is the student among the co-authors?' in 9.76s
+
+🔍 Results per retrieval system:
+
+=== FAISS_TEXT ===
+✓ Found segment at time 101.00s-112.91s
+  Score: 0.7201
+
+📑 Retrieved text:
+--------------------------------------------------
+And it's joint work with Valentin Barchet, Nicolas Bousquet, Clément Dallard, and Kyle Lomer, who is my master's student. All right.
+--------------------------------------------------
+🧠 Generating answer with faiss_text...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 134 characters, 21 words
+Question: Who is the student among the co-authors?
+--------------------------------------------------------------------------------
+✨ Generated answer in 5.42s: Kyle Lomer
+--------------------------------------------------------------------------------
+
+✨ faiss_text answer: Kyle Lomer
+⏱️ Timespan: 101.00s - 112.91s
+
+=== FAISS_IMAGE ===
+✓ Found segment at time 70.00s-80.93s
+  Score: 0.2679
+
+📑 Retrieved text:
+--------------------------------------------------
+No text available for this segment
+--------------------------------------------------
+🧠 Generating answer with faiss_image...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 36 characters, 6 words
+Question: Who is the student among the co-authors?
+--------------------------------------------------------------------------------
+✨ Generated answer in 8.15s: No text available for this segment
+--------------------------------------------------------------------------------
+
+✨ faiss_image answer: No text available for this segment
+⏱️ Timespan: 70.00s - 80.93s
+
+=== FAISS_FUSION ===
+Query type: General
+Weights: Text 0.60, Image 0.40
+✓ Found segment at time 101.00s-112.91s
+  Score: 0.6000
+
+📑 Retrieved text:
+--------------------------------------------------
+And it's joint work with Valentin Barchet, Nicolas Bousquet, Clément Dallard, and Kyle Lomer, who is my master's student. All right.
+--------------------------------------------------
+🧠 Generating answer with faiss_fusion...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 134 characters, 21 words
+Question: Who is the student among the co-authors?
+--------------------------------------------------------------------------------
+✨ Generated answer in 5.19s: Kyle Lomer
+--------------------------------------------------------------------------------
+
+✨ faiss_fusion answer: Kyle Lomer
+⏱️ Timespan: 101.00s - 112.91s
+
+=== TFIDF ===
+✓ Found segment at time 101.00s-112.91s
+  Score: 0.2002
+
+📑 Retrieved text:
+--------------------------------------------------
+And it's joint work with Valentin Barchet, Nicolas Bousquet, Clément Dallard, and Kyle Lomer, who is my master's student. All right.
+--------------------------------------------------
+🧠 Generating answer with tfidf...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 134 characters, 21 words
+Question: Who is the student among the co-authors?
+--------------------------------------------------------------------------------
+✨ Generated answer in 6.04s: Kyle Lomer
+--------------------------------------------------------------------------------
+
+✨ tfidf answer: Kyle Lomer
+⏱️ Timespan: 101.00s - 112.91s
+
+=== BM25 ===
+✓ Found segment at time 101.00s-112.91s
+  Score: 5.2724
+
+📑 Retrieved text:
+--------------------------------------------------
+And it's joint work with Valentin Barchet, Nicolas Bousquet, Clément Dallard, and Kyle Lomer, who is my master's student. All right.
+--------------------------------------------------
+🧠 Generating answer with bm25...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 134 characters, 21 words
+Question: Who is the student among the co-authors?
+--------------------------------------------------------------------------------
+✨ Generated answer in 5.95s: Kyle Lomer
+--------------------------------------------------------------------------------
+
+✨ bm25 answer: Kyle Lomer
+⏱️ Timespan: 101.00s - 112.91s
+
+**************************************************
+RESULTS SUMMARY
+**************************************************
+
+--- FAISS_TEXT ---
+ANSWER: Kyle Lomer
+TIMESPAN: 101.00s - 112.91s
+✓ MATCH with ground truth at 101.00s-112.91s
+
+--- FAISS_IMAGE ---
+ANSWER: No text available for this segment
+TIMESPAN: 70.00s - 80.93s
+✗ NO MATCH with ground truth
+
+--- FAISS_FUSION ---
+ANSWER: Kyle Lomer
+TIMESPAN: 101.00s - 112.91s
+✓ MATCH with ground truth at 101.00s-112.91s
+
+--- TFIDF ---
+ANSWER: Kyle Lomer
+TIMESPAN: 101.00s - 112.91s
+✓ MATCH with ground truth at 101.00s-112.91s
+
+--- BM25 ---
+ANSWER: Kyle Lomer
+TIMESPAN: 101.00s - 112.91s
+✓ MATCH with ground truth at 101.00s-112.91s
+**************************************************
+
+==================================================
+COMPLETED QUESTION 1/10
+==================================================
+
+
+==================================================
+PROCESSING QUESTION 2/10
+==================================================
+
+Question: What is the 15-puzzle game?
+
+Expected answer locations:
+  206.00s - 219.93s: "And the most common one that we use is the 15 puzzle game. So for those of you who don't know the 15..."
+
+Retrieving answer... (this may take a moment)
+
+📝 Processing query: What is the 15-puzzle game?
+Rewritten from 'What is the 15-puzzle game?' to 'What is the 15-puzzle game?' in 5.82s
+
+🔍 Results per retrieval system:
+
+=== FAISS_TEXT ===
+✓ Found segment at time 278.00s-300.93s
+  Score: 0.8654
+
+📑 Retrieved text:
+--------------------------------------------------
+So why do I start my talk by talking about 15 puzzle? It's because it's really, I mean, the way you solve the 15 puzzle tells you a lot about the game. It's because it's really, I mean, the way you solve the 15 puzzle tells you a lot about the game. And it's really, I mean, the way you solve the 15 puzzle tells you a lot about the area of combinatorial reconfiguration. So the standard way we would think about the 15 puzzle is by looking at the state space or what we call the reconfiguration graph of the 15 puzzle.
+--------------------------------------------------
+🧠 Generating answer with faiss_text...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 521 characters, 103 words
+Question: What is the 15-puzzle game?
+--------------------------------------------------------------------------------
+✨ Generated answer in 14.17s: the way you solve the 15 puzzle tells you a lot about the game
+--------------------------------------------------------------------------------
+
+✨ faiss_text answer: the way you solve the 15 puzzle tells you a lot about the game
+⏱️ Timespan: 278.00s - 300.93s
+
+=== FAISS_IMAGE ===
+✓ Found segment at time 266.00s-277.93s
+  Score: 0.2891
+
+📑 Retrieved text:
+--------------------------------------------------
+No text available for this segment
+--------------------------------------------------
+🧠 Generating answer with faiss_image...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 36 characters, 6 words
+Question: What is the 15-puzzle game?
+--------------------------------------------------------------------------------
+✨ Generated answer in 8.22s: No text available for this segment
+--------------------------------------------------------------------------------
+
+✨ faiss_image answer: No text available for this segment
+⏱️ Timespan: 266.00s - 277.93s
+
+=== FAISS_FUSION ===
+Query type: General
+Weights: Text 0.60, Image 0.40
+✓ Found segment at time 278.00s-300.93s
+  Score: 0.6000
+
+📑 Retrieved text:
+--------------------------------------------------
+So why do I start my talk by talking about 15 puzzle? It's because it's really, I mean, the way you solve the 15 puzzle tells you a lot about the game. It's because it's really, I mean, the way you solve the 15 puzzle tells you a lot about the game. And it's really, I mean, the way you solve the 15 puzzle tells you a lot about the area of combinatorial reconfiguration. So the standard way we would think about the 15 puzzle is by looking at the state space or what we call the reconfiguration graph of the 15 puzzle.
+--------------------------------------------------
+🧠 Generating answer with faiss_fusion...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 521 characters, 103 words
+Question: What is the 15-puzzle game?
+--------------------------------------------------------------------------------
+✨ Generated answer in 13.61s: the way you solve the 15 puzzle tells you a lot about the game
+--------------------------------------------------------------------------------
+
+✨ faiss_fusion answer: the way you solve the 15 puzzle tells you a lot about the game
+⏱️ Timespan: 278.00s - 300.93s
+
+=== TFIDF ===
+✓ Found segment at time 468.64s-479.75s
+  Score: 0.3434
+
+📑 Retrieved text:
+--------------------------------------------------
+or to solve your game, to win your game, for example. And in the literature, this is sometimes known as God's number, which would be the diameter of the reconfiguration graph.
+--------------------------------------------------
+🧠 Generating answer with tfidf...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 177 characters, 31 words
+Question: What is the 15-puzzle game?
+--------------------------------------------------------------------------------
+✨ Generated answer in 9.96s: God's number
+--------------------------------------------------------------------------------
+
+✨ tfidf answer: God's number
+⏱️ Timespan: 468.64s - 479.75s
+
+=== BM25 ===
+✓ Found segment at time 468.64s-479.75s
+  Score: 4.9841
+
+📑 Retrieved text:
+--------------------------------------------------
+or to solve your game, to win your game, for example. And in the literature, this is sometimes known as God's number, which would be the diameter of the reconfiguration graph.
+--------------------------------------------------
+🧠 Generating answer with bm25...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 177 characters, 31 words
+Question: What is the 15-puzzle game?
+--------------------------------------------------------------------------------
+✨ Generated answer in 11.10s: God's number
+--------------------------------------------------------------------------------
+
+✨ bm25 answer: God's number
+⏱️ Timespan: 468.64s - 479.75s
+
+**************************************************
+RESULTS SUMMARY
+**************************************************
+
+--- FAISS_TEXT ---
+ANSWER: the way you solve the 15 puzzle tells you a lot about the game
+TIMESPAN: 278.00s - 300.93s
+✗ NO MATCH with ground truth
+
+--- FAISS_IMAGE ---
+ANSWER: No text available for this segment
+TIMESPAN: 266.00s - 277.93s
+✗ NO MATCH with ground truth
+
+--- FAISS_FUSION ---
+ANSWER: the way you solve the 15 puzzle tells you a lot about the game
+TIMESPAN: 278.00s - 300.93s
+✗ NO MATCH with ground truth
+
+--- TFIDF ---
+ANSWER: God's number
+TIMESPAN: 468.64s - 479.75s
+✗ NO MATCH with ground truth
+
+--- BM25 ---
+ANSWER: God's number
+TIMESPAN: 468.64s - 479.75s
+✗ NO MATCH with ground truth
+**************************************************
+
+==================================================
+COMPLETED QUESTION 2/10
+==================================================
+
+
+==================================================
+PROCESSING QUESTION 3/10
+==================================================
+
+Question: How many tiles are in the 15-puzzle?
+
+Expected answer locations:
+  220.00s - 226.94s: "And basically you have all the remaining 15 squares are numbered from one to 15 and they come in som..."
+
+Retrieving answer... (this may take a moment)
+
+📝 Processing query: How many tiles are in the 15-puzzle?
+Rewritten from 'How many tiles are in the 15-puzzle?' to 'How many tiles are in the 15-puzzle?' in 8.01s
+
+🔍 Results per retrieval system:
+
+=== FAISS_TEXT ===
+✓ Found segment at time 278.00s-300.93s
+  Score: 0.8323
+
+📑 Retrieved text:
+--------------------------------------------------
+So why do I start my talk by talking about 15 puzzle? It's because it's really, I mean, the way you solve the 15 puzzle tells you a lot about the game. It's because it's really, I mean, the way you solve the 15 puzzle tells you a lot about the game. And it's really, I mean, the way you solve the 15 puzzle tells you a lot about the area of combinatorial reconfiguration. So the standard way we would think about the 15 puzzle is by looking at the state space or what we call the reconfiguration graph of the 15 puzzle.
+--------------------------------------------------
+🧠 Generating answer with faiss_text...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 521 characters, 103 words
+Question: How many tiles are in the 15-puzzle?
+--------------------------------------------------------------------------------
+✨ Generated answer in 6.30s: 15
+--------------------------------------------------------------------------------
+
+✨ faiss_text answer: 15
+⏱️ Timespan: 278.00s - 300.93s
+
+=== FAISS_IMAGE ===
+✓ Found segment at time 234.00s-254.94s
+  Score: 0.2877
+
+📑 Retrieved text:
+--------------------------------------------------
+No text available for this segment
+--------------------------------------------------
+🧠 Generating answer with faiss_image...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 36 characters, 6 words
+Question: How many tiles are in the 15-puzzle?
+--------------------------------------------------------------------------------
+✨ Generated answer in 4.92s: 15
+--------------------------------------------------------------------------------
+
+✨ faiss_image answer: 15
+⏱️ Timespan: 234.00s - 254.94s
+
+=== FAISS_FUSION ===
+Query type: General
+Weights: Text 0.60, Image 0.40
+✓ Found segment at time 278.00s-300.93s
+  Score: 0.6000
+
+📑 Retrieved text:
+--------------------------------------------------
+So why do I start my talk by talking about 15 puzzle? It's because it's really, I mean, the way you solve the 15 puzzle tells you a lot about the game. It's because it's really, I mean, the way you solve the 15 puzzle tells you a lot about the game. And it's really, I mean, the way you solve the 15 puzzle tells you a lot about the area of combinatorial reconfiguration. So the standard way we would think about the 15 puzzle is by looking at the state space or what we call the reconfiguration graph of the 15 puzzle.
+--------------------------------------------------
+🧠 Generating answer with faiss_fusion...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 521 characters, 103 words
+Question: How many tiles are in the 15-puzzle?
+--------------------------------------------------------------------------------
+✨ Generated answer in 7.47s: 15
+--------------------------------------------------------------------------------
+
+✨ faiss_fusion answer: 15
+⏱️ Timespan: 278.00s - 300.93s
+
+=== TFIDF ===
+❌ No results found with tfidf
+
+=== BM25 ===
+✓ Found segment at time 1086.54s-1096.47s
+  Score: 4.8792
+
+📑 Retrieved text:
+--------------------------------------------------
+And the reason why I mentioned this class, it's because many, many, many, many reconfiguration problems actually are PSPACE complete.
+--------------------------------------------------
+🧠 Generating answer with bm25...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 135 characters, 20 words
+Question: How many tiles are in the 15-puzzle?
+--------------------------------------------------------------------------------
+✨ Generated answer in 4.96s: 15
+--------------------------------------------------------------------------------
+
+✨ bm25 answer: 15
+⏱️ Timespan: 1086.54s - 1096.47s
+
+**************************************************
+RESULTS SUMMARY
+**************************************************
+
+--- FAISS_TEXT ---
+ANSWER: 15
+TIMESPAN: 278.00s - 300.93s
+✗ NO MATCH with ground truth
+
+--- FAISS_IMAGE ---
+ANSWER: 15
+TIMESPAN: 234.00s - 254.94s
+✗ NO MATCH with ground truth
+
+--- FAISS_FUSION ---
+ANSWER: 15
+TIMESPAN: 278.00s - 300.93s
+✗ NO MATCH with ground truth
+
+--- TFIDF ---
+ANSWER: Could not find relevant information using tfidf.
+
+--- BM25 ---
+ANSWER: 15
+TIMESPAN: 1086.54s - 1096.47s
+✗ NO MATCH with ground truth
+**************************************************
+
+==================================================
+COMPLETED QUESTION 3/10
+==================================================
+
+
+==================================================
+PROCESSING QUESTION 4/10
+==================================================
+
+Question: What is a reconfiguration graph?
+
+Expected answer locations:
+  301.00s - 310.92s: "So what does that graph consist of? Well, we have one vertex or one node in this graph for each poss..."
+
+Retrieving answer... (this may take a moment)
+
+📝 Processing query: What is a reconfiguration graph?
+Rewritten from 'What is a reconfiguration graph?' to 'What is a reconfiguration graph?' in 7.13s
+
+🔍 Results per retrieval system:
+
+=== FAISS_TEXT ===
+✓ Found segment at time 864.54s-873.48s
+  Score: 0.8116
+
+📑 Retrieved text:
+--------------------------------------------------
+We can think about the reconfiguration graph under the token jumping adjacency. And we can think about the reconfiguration graph under the token sliding adjacency.
+--------------------------------------------------
+🧠 Generating answer with faiss_text...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 165 characters, 25 words
+Question: What is a reconfiguration graph?
+--------------------------------------------------------------------------------
+✨ Generated answer in 19.00s: We can think about the reconfiguration graph under the token jumping adjacency. And we can think about the reconfiguration graph under the token sliding adjacency.
+--------------------------------------------------------------------------------
+
+✨ faiss_text answer: We can think about the reconfiguration graph under the token jumping adjacency. And we can think about the reconfiguration graph under the token sliding adjacency.
+⏱️ Timespan: 864.54s - 873.48s
+
+=== FAISS_IMAGE ===
+✓ Found segment at time 317.00s-330.60s
+  Score: 0.3775
+
+📑 Retrieved text:
+--------------------------------------------------
+No text available for this segment
+--------------------------------------------------
+🧠 Generating answer with faiss_image...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 36 characters, 6 words
+Question: What is a reconfiguration graph?
+--------------------------------------------------------------------------------
+✨ Generated answer in 12.97s: No text available for this segment
+--------------------------------------------------------------------------------
+
+✨ faiss_image answer: No text available for this segment
+⏱️ Timespan: 317.00s - 330.60s
+
+=== FAISS_FUSION ===
+Query type: Visual
+Weights: Text 0.30, Image 0.70
+✓ Found segment at time 317.00s-330.60s
+  Score: 0.7000
+
+📑 Retrieved text:
+--------------------------------------------------
+numbers in addition to where you're going to put the empty square. Each one of those will be a vertex in the graph. And now we connect two vertices in that graph whenever one can be reached from the
+--------------------------------------------------
+🧠 Generating answer with faiss_fusion...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 200 characters, 39 words
+Question: What is a reconfiguration graph?
+--------------------------------------------------------------------------------
+✨ Generated answer in 27.03s: Each one of those will be a vertex in the graph. Each one of those will be a vertex in the graph. And now we connect two vertices in that graph whenever one can be reached from the
+--------------------------------------------------------------------------------
+
+✨ faiss_fusion answer: Each one of those will be a vertex in the graph. And now we connect two vertices in that graph whenever one can be reached from the
+⏱️ Timespan: 317.00s - 330.60s
+
+=== TFIDF ===
+✓ Found segment at time 864.54s-873.48s
+  Score: 0.4577
+
+📑 Retrieved text:
+--------------------------------------------------
+We can think about the reconfiguration graph under the token jumping adjacency. And we can think about the reconfiguration graph under the token sliding adjacency.
+--------------------------------------------------
+🧠 Generating answer with tfidf...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 165 characters, 25 words
+Question: What is a reconfiguration graph?
+--------------------------------------------------------------------------------
+✨ Generated answer in 29.08s: We can think about the reconfiguration graph under the token jumping adjacency. And we can think about the reconfiguration graph under the token sliding adjacency.
+--------------------------------------------------------------------------------
+
+✨ tfidf answer: We can think about the reconfiguration graph under the token jumping adjacency. And we can think about the reconfiguration graph under the token sliding adjacency.
+⏱️ Timespan: 864.54s - 873.48s
+
+=== BM25 ===
+✓ Found segment at time 864.54s-873.48s
+  Score: 5.7605
+
+📑 Retrieved text:
+--------------------------------------------------
+We can think about the reconfiguration graph under the token jumping adjacency. And we can think about the reconfiguration graph under the token sliding adjacency.
+--------------------------------------------------
+🧠 Generating answer with bm25...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 165 characters, 25 words
+Question: What is a reconfiguration graph?
+--------------------------------------------------------------------------------
+✨ Generated answer in 20.70s: We can think about the reconfiguration graph under the token jumping adjacency. And we can think about the reconfiguration graph under the token sliding adjacency.
+--------------------------------------------------------------------------------
+
+✨ bm25 answer: We can think about the reconfiguration graph under the token jumping adjacency. And we can think about the reconfiguration graph under the token sliding adjacency.
+⏱️ Timespan: 864.54s - 873.48s
+
+**************************************************
+RESULTS SUMMARY
+**************************************************
+
+--- FAISS_TEXT ---
+ANSWER: We can think about the reconfiguration graph under the token jumping adjacency. And we can think about the reconfiguration graph under the token sliding adjacency.
+TIMESPAN: 864.54s - 873.48s
+✗ NO MATCH with ground truth
+
+--- FAISS_IMAGE ---
+ANSWER: No text available for this segment
+TIMESPAN: 317.00s - 330.60s
+✗ NO MATCH with ground truth
+
+--- FAISS_FUSION ---
+ANSWER: Each one of those will be a vertex in the graph. And now we connect two vertices in that graph whenever one can be reached from the
+TIMESPAN: 317.00s - 330.60s
+✗ NO MATCH with ground truth
+
+--- TFIDF ---
+ANSWER: We can think about the reconfiguration graph under the token jumping adjacency. And we can think about the reconfiguration graph under the token sliding adjacency.
+TIMESPAN: 864.54s - 873.48s
+✗ NO MATCH with ground truth
+
+--- BM25 ---
+ANSWER: We can think about the reconfiguration graph under the token jumping adjacency. And we can think about the reconfiguration graph under the token sliding adjacency.
+TIMESPAN: 864.54s - 873.48s
+✗ NO MATCH with ground truth
+**************************************************
+
+==================================================
+COMPLETED QUESTION 4/10
+==================================================
+
+
+==================================================
+PROCESSING QUESTION 5/10
+==================================================
+
+Question: What is the PC301 workshop and how it is different from previous workshops?
+
+Expected answer locations:
+  1000.54s - 1016.47s: "Any questions at this point? I apologize for the small context which I am interrupting here. So this..."
+  1016.54s - 1025.48s: "And this will be slightly different from the previous two workshops. First major difference. This wi..."
+  ... and 2 more locations
+
+Retrieving answer... (this may take a moment)
+
+📝 Processing query: What is the PC301 workshop and how it is different from previous workshops?
+Rewritten from 'What is the PC301 workshop and how it is different from previous workshops?' to 'What is the PC301 workshop and how is it different from previous workshops?' in 8.31s
+🔄 Rewritten query: What is the PC301 workshop and how is it different from previous workshops?
+
+🔍 Results per retrieval system:
+
+=== FAISS_TEXT ===
+✓ Found segment at time 1000.54s-1016.47s
+  Score: 0.8236
+
+📑 Retrieved text:
+--------------------------------------------------
+Any questions at this point? I apologize for the small context which I am interrupting here. So this is just to announce for the PC301 workshop that will be happening in December end.
+--------------------------------------------------
+🧠 Generating answer with faiss_text...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 185 characters, 33 words
+Question: What is the PC301 workshop and how is it different from previous workshops?
+--------------------------------------------------------------------------------
+✨ Generated answer in 9.59s: PC301 workshop that will be happening in December end.
+--------------------------------------------------------------------------------
+
+✨ faiss_text answer: PC301 workshop that will be happening in December end.
+⏱️ Timespan: 1000.54s - 1016.47s
+
+=== FAISS_IMAGE ===
+✓ Found segment at time 1096.54s-1111.51s
+  Score: 0.2720
+
+📑 Retrieved text:
+--------------------------------------------------
+No text available for this segment
+--------------------------------------------------
+🧠 Generating answer with faiss_image...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 36 characters, 6 words
+Question: What is the PC301 workshop and how is it different from previous workshops?
+--------------------------------------------------------------------------------
+✨ Generated answer in 14.85s: The PC301 workshop is different from previous workshops.
+--------------------------------------------------------------------------------
+
+✨ faiss_image answer: The PC301 workshop is different from previous workshops.
+⏱️ Timespan: 1096.54s - 1111.51s
+
+=== FAISS_FUSION ===
+Query type: General
+Weights: Text 0.60, Image 0.40
+✓ Found segment at time 1000.54s-1016.47s
+  Score: 0.6000
+
+📑 Retrieved text:
+--------------------------------------------------
+Any questions at this point? I apologize for the small context which I am interrupting here. So this is just to announce for the PC301 workshop that will be happening in December end.
+--------------------------------------------------
+🧠 Generating answer with faiss_fusion...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 185 characters, 33 words
+Question: What is the PC301 workshop and how is it different from previous workshops?
+--------------------------------------------------------------------------------
+✨ Generated answer in 8.32s: PC301 workshop that will be happening in December end.
+--------------------------------------------------------------------------------
+
+✨ faiss_fusion answer: PC301 workshop that will be happening in December end.
+⏱️ Timespan: 1000.54s - 1016.47s
+
+=== TFIDF ===
+✓ Found segment at time 1016.54s-1025.48s
+  Score: 0.3786
+
+📑 Retrieved text:
+--------------------------------------------------
+And this will be slightly different from the previous two workshops. First major difference. This will be online. Second is some advanced topics will be discussed.
+--------------------------------------------------
+🧠 Generating answer with tfidf...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 165 characters, 26 words
+Question: What is the PC301 workshop and how is it different from previous workshops?
+--------------------------------------------------------------------------------
+✨ Generated answer in 19.27s: This will be slightly different from the previous two workshops. First major difference. This will be online. Second is some advanced topics will be discussed
+--------------------------------------------------------------------------------
+
+✨ tfidf answer: This will be slightly different from the previous two workshops. First major difference. This will be online. Second is some advanced topics will be discussed
+⏱️ Timespan: 1016.54s - 1025.48s
+
+=== BM25 ===
+✓ Found segment at time 1016.54s-1025.48s
+  Score: 13.4517
+
+📑 Retrieved text:
+--------------------------------------------------
+And this will be slightly different from the previous two workshops. First major difference. This will be online. Second is some advanced topics will be discussed.
+--------------------------------------------------
+🧠 Generating answer with bm25...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 165 characters, 26 words
+Question: What is the PC301 workshop and how is it different from previous workshops?
+--------------------------------------------------------------------------------
+✨ Generated answer in 18.01s: This will be slightly different from the previous two workshops. First major difference. This will be online. Second is some advanced topics will be discussed
+--------------------------------------------------------------------------------
+
+✨ bm25 answer: This will be slightly different from the previous two workshops. First major difference. This will be online. Second is some advanced topics will be discussed
+⏱️ Timespan: 1016.54s - 1025.48s
+
+**************************************************
+RESULTS SUMMARY
+**************************************************
+
+--- FAISS_TEXT ---
+ANSWER: PC301 workshop that will be happening in December end.
+TIMESPAN: 1000.54s - 1016.47s
+✓ MATCH with ground truth at 1000.54s-1016.47s
+
+--- FAISS_IMAGE ---
+ANSWER: The PC301 workshop is different from previous workshops.
+TIMESPAN: 1096.54s - 1111.51s
+✗ NO MATCH with ground truth
+
+--- FAISS_FUSION ---
+ANSWER: PC301 workshop that will be happening in December end.
+TIMESPAN: 1000.54s - 1016.47s
+✓ MATCH with ground truth at 1000.54s-1016.47s
+
+--- TFIDF ---
+ANSWER: This will be slightly different from the previous two workshops. First major difference. This will be online. Second is some advanced topics will be discussed
+TIMESPAN: 1016.54s - 1025.48s
+✓ MATCH with ground truth at 1016.54s-1025.48s
+
+--- BM25 ---
+ANSWER: This will be slightly different from the previous two workshops. First major difference. This will be online. Second is some advanced topics will be discussed
+TIMESPAN: 1016.54s - 1025.48s
+✓ MATCH with ground truth at 1016.54s-1025.48s
+**************************************************
+
+==================================================
+COMPLETED QUESTION 5/10
+==================================================
+
+
+==================================================
+PROCESSING QUESTION 6/10
+==================================================
+
+Question: What is the state space?
+
+Expected answer locations:
+  354.64s - 366.66s: "12, or 15. And that gives us basically four neighbors of that vertex in the graph. Okay, and we call..."
+
+Retrieving answer... (this may take a moment)
+
+📝 Processing query: What is the state space?
+Rewritten from 'What is the state space?' to 'What is the state space?' in 5.53s
+
+🔍 Results per retrieval system:
+
+=== FAISS_TEXT ===
+✓ Found segment at time 410.06s-423.31s
+  Score: 0.6797
+
+📑 Retrieved text:
+--------------------------------------------------
+bounds. More interestingly, you could ask, is this reconfiguration graph connected, right? Or can I reach any state starting from any other state by a sequence of legal moves?
+--------------------------------------------------
+🧠 Generating answer with faiss_text...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 177 characters, 29 words
+Question: What is the state space?
+--------------------------------------------------------------------------------
+✨ Generated answer in 13.12s: can I reach any state starting from any other state by a sequence of legal moves?
+--------------------------------------------------------------------------------
+
+✨ faiss_text answer: can I reach any state starting from any other state by a sequence of legal moves?
+⏱️ Timespan: 410.06s - 423.31s
+
+=== FAISS_IMAGE ===
+✓ Found segment at time 444.46s-459.08s
+  Score: 0.3040
+
+📑 Retrieved text:
+--------------------------------------------------
+No text available for this segment
+--------------------------------------------------
+🧠 Generating answer with faiss_image...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 36 characters, 6 words
+Question: What is the state space?
+--------------------------------------------------------------------------------
+✨ Generated answer in 11.20s: No text available
+--------------------------------------------------------------------------------
+
+✨ faiss_image answer: No text available
+⏱️ Timespan: 444.46s - 459.08s
+
+=== FAISS_FUSION ===
+Query type: General
+Weights: Text 0.60, Image 0.40
+✓ Found segment at time 410.06s-423.31s
+  Score: 0.6000
+
+📑 Retrieved text:
+--------------------------------------------------
+bounds. More interestingly, you could ask, is this reconfiguration graph connected, right? Or can I reach any state starting from any other state by a sequence of legal moves?
+--------------------------------------------------
+🧠 Generating answer with faiss_fusion...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 177 characters, 29 words
+Question: What is the state space?
+--------------------------------------------------------------------------------
+✨ Generated answer in 12.78s: can I reach any state starting from any other state by a sequence of legal moves?
+--------------------------------------------------------------------------------
+
+✨ faiss_fusion answer: can I reach any state starting from any other state by a sequence of legal moves?
+⏱️ Timespan: 410.06s - 423.31s
+
+=== TFIDF ===
+✓ Found segment at time 354.64s-366.66s
+  Score: 0.3288
+
+📑 Retrieved text:
+--------------------------------------------------
+12, or 15. And that gives us basically four neighbors of that vertex in the graph. Okay, and we call this whole graph the reconfiguration graph, or the state space,
+--------------------------------------------------
+🧠 Generating answer with tfidf...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 166 characters, 30 words
+Question: What is the state space?
+--------------------------------------------------------------------------------
+✨ Generated answer in 13.91s: we call this whole graph the reconfiguration graph, or the state space
+--------------------------------------------------------------------------------
+
+✨ tfidf answer: we call this whole graph the reconfiguration graph, or the state space
+⏱️ Timespan: 354.64s - 366.66s
+
+=== BM25 ===
+✓ Found segment at time 1111.54s-1135.48s
+  Score: 6.6850
+
+📑 Retrieved text:
+--------------------------------------------------
+So polynomial space and non deterministic polynomial space are the same class. Basically, and that's extremely useful when you start to think about reconfiguration problems, because if you think of a reconfiguration problem where you're given some state and you want to reach the other one. So basically, you can solve that easily in non deterministic polynomial space.
+--------------------------------------------------
+🧠 Generating answer with bm25...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 371 characters, 58 words
+Question: What is the state space?
+--------------------------------------------------------------------------------
+✨ Generated answer in 16.52s: if you think of a reconfiguration problem where you're given some state and you want to reach the other one
+--------------------------------------------------------------------------------
+
+✨ bm25 answer: if you think of a reconfiguration problem where you're given some state and you want to reach the other one
+⏱️ Timespan: 1111.54s - 1135.48s
+
+**************************************************
+RESULTS SUMMARY
+**************************************************
+
+--- FAISS_TEXT ---
+ANSWER: can I reach any state starting from any other state by a sequence of legal moves?
+TIMESPAN: 410.06s - 423.31s
+✗ NO MATCH with ground truth
+
+--- FAISS_IMAGE ---
+ANSWER: No text available
+TIMESPAN: 444.46s - 459.08s
+✗ NO MATCH with ground truth
+
+--- FAISS_FUSION ---
+ANSWER: can I reach any state starting from any other state by a sequence of legal moves?
+TIMESPAN: 410.06s - 423.31s
+✗ NO MATCH with ground truth
+
+--- TFIDF ---
+ANSWER: we call this whole graph the reconfiguration graph, or the state space
+TIMESPAN: 354.64s - 366.66s
+✓ MATCH with ground truth at 354.64s-366.66s
+
+--- BM25 ---
+ANSWER: if you think of a reconfiguration problem where you're given some state and you want to reach the other one
+TIMESPAN: 1111.54s - 1135.48s
+✗ NO MATCH with ground truth
+**************************************************
+
+==================================================
+COMPLETED QUESTION 6/10
+==================================================
+
+
+==================================================
+PROCESSING QUESTION 7/10
+==================================================
+
+Question: What types of questions can you ask about the reconfiguration graph?
+
+Expected answer locations:
+  377.92s - 390.15s: "questions that you can ask about it. There are structural questions and there are algorithmic questi..."
+
+Retrieving answer... (this may take a moment)
+
+📝 Processing query: What types of questions can you ask about the reconfiguration graph?
+Rewritten from 'What types of questions can you ask about the reconfiguration graph?' to 'What types of questions can you ask about the reconfiguration graph?' in 7.93s
+
+🔍 Results per retrieval system:
+
+=== FAISS_TEXT ===
+✓ Found segment at time 479.83s-494.49s
+  Score: 0.8356
+
+📑 Retrieved text:
+--------------------------------------------------
+And these are all very interesting structural questions to ask about this reconfiguration graph. Now, on the algorithmic side or the computational side, there's the obvious question of if I'm given
+--------------------------------------------------
+🧠 Generating answer with faiss_text...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 199 characters, 31 words
+Question: What types of questions can you ask about the reconfiguration graph?
+--------------------------------------------------------------------------------
+✨ Generated answer in 18.52s: 1. structural questions 2. Be concise and specific, focusing only on what's mentioned in the context 3.
+--------------------------------------------------------------------------------
+
+✨ faiss_text answer: 1. structural questions 2. Be concise and specific, focusing only on what's mentioned in the context 3.
+⏱️ Timespan: 479.83s - 494.49s
+
+=== FAISS_IMAGE ===
+✓ Found segment at time 635.63s-641.86s
+  Score: 0.3631
+
+📑 Retrieved text:
+--------------------------------------------------
+No text available for this segment
+--------------------------------------------------
+🧠 Generating answer with faiss_image...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 36 characters, 6 words
+Question: What types of questions can you ask about the reconfiguration graph?
+--------------------------------------------------------------------------------
+✨ Generated answer in 10.11s: What types of questions can you ask about the reconfiguration graph?
+--------------------------------------------------------------------------------
+
+✨ faiss_image answer: What types of questions can you ask about the reconfiguration graph?
+⏱️ Timespan: 635.63s - 641.86s
+
+=== FAISS_FUSION ===
+Query type: Visual
+Weights: Text 0.30, Image 0.70
+✓ Found segment at time 635.63s-641.86s
+  Score: 0.7000
+
+📑 Retrieved text:
+--------------------------------------------------
+So now you can think of those satisfying assignments as bit vectors. And notice that without this condition, the problem is trivial.
+--------------------------------------------------
+🧠 Generating answer with faiss_fusion...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 134 characters, 22 words
+Question: What types of questions can you ask about the reconfiguration graph?
+--------------------------------------------------------------------------------
+✨ Generated answer in 11.48s: What kind of assignments can you think of those satisfying assignments as bit vectors?
+--------------------------------------------------------------------------------
+
+✨ faiss_fusion answer: What kind of assignments can you think of those satisfying assignments as bit vectors?
+⏱️ Timespan: 635.63s - 641.86s
+
+=== TFIDF ===
+✓ Found segment at time 377.92s-390.15s
+  Score: 0.4240
+
+📑 Retrieved text:
+--------------------------------------------------
+questions that you can ask about it. There are structural questions and there are algorithmic questions. And these are typically the types of questions that we're interested in, in this area
+--------------------------------------------------
+🧠 Generating answer with tfidf...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 192 characters, 31 words
+Question: What types of questions can you ask about the reconfiguration graph?
+--------------------------------------------------------------------------------
+✨ Generated answer in 6.00s: structural questions and algorithmic questions
+--------------------------------------------------------------------------------
+
+✨ tfidf answer: structural questions and algorithmic questions
+⏱️ Timespan: 377.92s - 390.15s
+
+=== BM25 ===
+✓ Found segment at time 377.92s-390.15s
+  Score: 13.8761
+
+📑 Retrieved text:
+--------------------------------------------------
+questions that you can ask about it. There are structural questions and there are algorithmic questions. And these are typically the types of questions that we're interested in, in this area
+--------------------------------------------------
+🧠 Generating answer with bm25...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 192 characters, 31 words
+Question: What types of questions can you ask about the reconfiguration graph?
+--------------------------------------------------------------------------------
+✨ Generated answer in 7.79s: structural questions and algorithmic questions
+--------------------------------------------------------------------------------
+
+✨ bm25 answer: structural questions and algorithmic questions
+⏱️ Timespan: 377.92s - 390.15s
+
+**************************************************
+RESULTS SUMMARY
+**************************************************
+
+--- FAISS_TEXT ---
+ANSWER: 1. structural questions 2. Be concise and specific, focusing only on what's mentioned in the context 3.
+TIMESPAN: 479.83s - 494.49s
+✗ NO MATCH with ground truth
+
+--- FAISS_IMAGE ---
+ANSWER: What types of questions can you ask about the reconfiguration graph?
+TIMESPAN: 635.63s - 641.86s
+✗ NO MATCH with ground truth
+
+--- FAISS_FUSION ---
+ANSWER: What kind of assignments can you think of those satisfying assignments as bit vectors?
+TIMESPAN: 635.63s - 641.86s
+✗ NO MATCH with ground truth
+
+--- TFIDF ---
+ANSWER: structural questions and algorithmic questions
+TIMESPAN: 377.92s - 390.15s
+✓ MATCH with ground truth at 377.92s-390.15s
+
+--- BM25 ---
+ANSWER: structural questions and algorithmic questions
+TIMESPAN: 377.92s - 390.15s
+✓ MATCH with ground truth at 377.92s-390.15s
+**************************************************
+
+==================================================
+COMPLETED QUESTION 7/10
+==================================================
+
+
+==================================================
+PROCESSING QUESTION 8/10
+==================================================
+
+Question: Give one example of a structural question about the reconfiguration graph.
+
+Expected answer locations:
+  390.22s - 401.07s: "of combinatorial reconfiguration. So a couple of examples of structural questions would be, well, th..."
+
+Retrieving answer... (this may take a moment)
+
+📝 Processing query: Give one example of a structural question about the reconfiguration graph.
+Rewritten from 'Give one example of a structural question about the reconfiguration graph.' to 'Give an example of a structural question about the reconfiguration graph.' in 8.16s
+🔄 Rewritten query: Give an example of a structural question about the reconfiguration graph.
+
+🔍 Results per retrieval system:
+
+=== FAISS_TEXT ===
+✓ Found segment at time 390.22s-401.07s
+  Score: 0.8889
+
+📑 Retrieved text:
+--------------------------------------------------
+of combinatorial reconfiguration. So a couple of examples of structural questions would be, well, the simplest one would be how big is this reconfiguration graph, right?
+--------------------------------------------------
+🧠 Generating answer with faiss_text...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 171 characters, 26 words
+Question: Give an example of a structural question about the reconfiguration graph.
+--------------------------------------------------------------------------------
+✨ Generated answer in 8.44s: How big is the reconfiguration graph?
+--------------------------------------------------------------------------------
+
+✨ faiss_text answer: How big is the reconfiguration graph?
+⏱️ Timespan: 390.22s - 401.07s
+
+=== FAISS_IMAGE ===
+✓ Found segment at time 354.64s-366.66s
+  Score: 0.3496
+
+📑 Retrieved text:
+--------------------------------------------------
+No text available for this segment
+--------------------------------------------------
+🧠 Generating answer with faiss_image...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 36 characters, 6 words
+Question: Give an example of a structural question about the reconfiguration graph.
+--------------------------------------------------------------------------------
+✨ Generated answer in 10.28s: What is the name of the graph?
+--------------------------------------------------------------------------------
+
+✨ faiss_image answer: What is the name of the graph?
+⏱️ Timespan: 354.64s - 366.66s
+
+=== FAISS_FUSION ===
+Query type: Visual
+Weights: Text 0.30, Image 0.70
+✓ Found segment at time 354.64s-366.66s
+  Score: 0.7000
+
+📑 Retrieved text:
+--------------------------------------------------
+12, or 15. And that gives us basically four neighbors of that vertex in the graph. Okay, and we call this whole graph the reconfiguration graph, or the state space,
+--------------------------------------------------
+🧠 Generating answer with faiss_fusion...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 166 characters, 30 words
+Question: Give an example of a structural question about the reconfiguration graph.
+--------------------------------------------------------------------------------
+✨ Generated answer in 9.80s: How many neighbors does a vertex have in the reconfiguration graph?
+--------------------------------------------------------------------------------
+
+✨ faiss_fusion answer: How many neighbors does a vertex have in the reconfiguration graph?
+⏱️ Timespan: 354.64s - 366.66s
+
+=== TFIDF ===
+✓ Found segment at time 535.60s-547.07s
+  Score: 0.3238
+
+📑 Retrieved text:
+--------------------------------------------------
+any other? And this is basically also related to the structural question about connected components. And the last question that I will mention, which is also interesting,
+--------------------------------------------------
+🧠 Generating answer with tfidf...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 172 characters, 27 words
+Question: Give an example of a structural question about the reconfiguration graph.
+--------------------------------------------------------------------------------
+✨ Generated answer in 10.17s: Is there any other question about the reconfiguration graph?
+--------------------------------------------------------------------------------
+
+✨ tfidf answer: Is there any other question about the reconfiguration graph?
+⏱️ Timespan: 535.60s - 547.07s
+
+=== BM25 ===
+✓ Found segment at time 479.83s-494.49s
+  Score: 9.6854
+
+📑 Retrieved text:
+--------------------------------------------------
+And these are all very interesting structural questions to ask about this reconfiguration graph. Now, on the algorithmic side or the computational side, there's the obvious question of if I'm given
+--------------------------------------------------
+🧠 Generating answer with bm25...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 199 characters, 31 words
+Question: Give an example of a structural question about the reconfiguration graph.
+--------------------------------------------------------------------------------
+✨ Generated answer in 9.52s: What is the algorithmic side of the reconfiguration graph?
+--------------------------------------------------------------------------------
+
+✨ bm25 answer: What is the algorithmic side of the reconfiguration graph?
+⏱️ Timespan: 479.83s - 494.49s
+
+**************************************************
+RESULTS SUMMARY
+**************************************************
+
+--- FAISS_TEXT ---
+ANSWER: How big is the reconfiguration graph?
+TIMESPAN: 390.22s - 401.07s
+✓ MATCH with ground truth at 390.22s-401.07s
+
+--- FAISS_IMAGE ---
+ANSWER: What is the name of the graph?
+TIMESPAN: 354.64s - 366.66s
+✗ NO MATCH with ground truth
+
+--- FAISS_FUSION ---
+ANSWER: How many neighbors does a vertex have in the reconfiguration graph?
+TIMESPAN: 354.64s - 366.66s
+✗ NO MATCH with ground truth
+
+--- TFIDF ---
+ANSWER: Is there any other question about the reconfiguration graph?
+TIMESPAN: 535.60s - 547.07s
+✗ NO MATCH with ground truth
+
+--- BM25 ---
+ANSWER: What is the algorithmic side of the reconfiguration graph?
+TIMESPAN: 479.83s - 494.49s
+✗ NO MATCH with ground truth
+**************************************************
+
+==================================================
+COMPLETED QUESTION 8/10
+==================================================
+
+
+==================================================
+PROCESSING QUESTION 9/10
+==================================================
+
+Question: When moving into parameterized complexity, which parameters does he propose for studying token sliding and token jumping?
+
+Expected answer locations:
+  1433.72s - 1445.36s: "And let's basically think about how you can parameterize those two problems, token jumping and token..."
+  1445.72s - 1452.37s: "right? So one of the obvious parameters would be the number of tokens. So, so, and we're going to de..."
+  ... and 2 more locations
+
+Retrieving answer... (this may take a moment)
+
+📝 Processing query: When moving into parameterized complexity, which parameters does he propose for studying token sliding and token jumping?
+Rewritten from 'When moving into parameterized complexity, which parameters does he propose for studying token sliding and token jumping?' to 'When moving into parameterized complexity, which parameters does he propose for studying token sliding and token jumping?' in 10.98s
+
+🔍 Results per retrieval system:
+
+=== FAISS_TEXT ===
+✓ Found segment at time 128.00s-141.94s
+  Score: 0.8645
+
+📑 Retrieved text:
+--------------------------------------------------
+Then I will talk about token jumping and token sliding, what we know about them in terms of classical complexity or one-dimensional complexity. Then I'll talk about the parametrized complexity of these two problems.
+--------------------------------------------------
+🧠 Generating answer with faiss_text...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 217 characters, 34 words
+Question: When moving into parameterized complexity, which parameters does he propose for studying token sliding and token jumping?
+--------------------------------------------------------------------------------
+✨ Generated answer in 9.02s: classical complexity or one-dimensional complexity
+--------------------------------------------------------------------------------
+
+✨ faiss_text answer: classical complexity or one-dimensional complexity
+⏱️ Timespan: 128.00s - 141.94s
+
+=== FAISS_IMAGE ===
+✓ Found segment at time 1046.54s-1053.45s
+  Score: 0.3272
+
+📑 Retrieved text:
+--------------------------------------------------
+No text available for this segment
+--------------------------------------------------
+🧠 Generating answer with faiss_image...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 36 characters, 6 words
+Question: When moving into parameterized complexity, which parameters does he propose for studying token sliding and token jumping?
+--------------------------------------------------------------------------------
+✨ Generated answer in 10.91s: he proposes the following parameters for studying token sliding and token jumping:
+--------------------------------------------------------------------------------
+
+✨ faiss_image answer: he proposes the following parameters for studying token sliding and token jumping:
+⏱️ Timespan: 1046.54s - 1053.45s
+
+=== FAISS_FUSION ===
+Query type: Technical
+Weights: Text 0.80, Image 0.20
+✓ Found segment at time 128.00s-141.94s
+  Score: 0.8000
+
+📑 Retrieved text:
+--------------------------------------------------
+Then I will talk about token jumping and token sliding, what we know about them in terms of classical complexity or one-dimensional complexity. Then I'll talk about the parametrized complexity of these two problems.
+--------------------------------------------------
+🧠 Generating answer with faiss_fusion...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 217 characters, 34 words
+Question: When moving into parameterized complexity, which parameters does he propose for studying token sliding and token jumping?
+--------------------------------------------------------------------------------
+✨ Generated answer in 7.40s: classical complexity or one-dimensional complexity
+--------------------------------------------------------------------------------
+
+✨ faiss_fusion answer: classical complexity or one-dimensional complexity
+⏱️ Timespan: 128.00s - 141.94s
+
+=== TFIDF ===
+✓ Found segment at time 1467.02s-1478.26s
+  Score: 0.3641
+
+📑 Retrieved text:
+--------------------------------------------------
+When we started working on this problem, our initial aim was to basically study the parameterized complexity of token sliding and token jumping on bipartite graphs,
+--------------------------------------------------
+🧠 Generating answer with tfidf...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 166 characters, 26 words
+Question: When moving into parameterized complexity, which parameters does he propose for studying token sliding and token jumping?
+--------------------------------------------------------------------------------
+✨ Generated answer in 10.85s: bipartite graphs
+--------------------------------------------------------------------------------
+
+✨ tfidf answer: bipartite graphs
+⏱️ Timespan: 1467.02s - 1478.26s
+
+=== BM25 ===
+✓ Found segment at time 1467.02s-1478.26s
+  Score: 13.4256
+
+📑 Retrieved text:
+--------------------------------------------------
+When we started working on this problem, our initial aim was to basically study the parameterized complexity of token sliding and token jumping on bipartite graphs,
+--------------------------------------------------
+🧠 Generating answer with bm25...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 166 characters, 26 words
+Question: When moving into parameterized complexity, which parameters does he propose for studying token sliding and token jumping?
+--------------------------------------------------------------------------------
+✨ Generated answer in 9.68s: bipartite graphs
+--------------------------------------------------------------------------------
+
+✨ bm25 answer: bipartite graphs
+⏱️ Timespan: 1467.02s - 1478.26s
+
+**************************************************
+RESULTS SUMMARY
+**************************************************
+
+--- FAISS_TEXT ---
+ANSWER: classical complexity or one-dimensional complexity
+TIMESPAN: 128.00s - 141.94s
+✗ NO MATCH with ground truth
+
+--- FAISS_IMAGE ---
+ANSWER: he proposes the following parameters for studying token sliding and token jumping:
+TIMESPAN: 1046.54s - 1053.45s
+✗ NO MATCH with ground truth
+
+--- FAISS_FUSION ---
+ANSWER: classical complexity or one-dimensional complexity
+TIMESPAN: 128.00s - 141.94s
+✗ NO MATCH with ground truth
+
+--- TFIDF ---
+ANSWER: bipartite graphs
+TIMESPAN: 1467.02s - 1478.26s
+✗ NO MATCH with ground truth
+
+--- BM25 ---
+ANSWER: bipartite graphs
+TIMESPAN: 1467.02s - 1478.26s
+✗ NO MATCH with ground truth
+**************************************************
+
+==================================================
+COMPLETED QUESTION 9/10
+==================================================
+
+
+==================================================
+PROCESSING QUESTION 10/10
+==================================================
+
+Question: How to know if the reconfiguration graph connected?
+
+Expected answer locations:
+  410.06s - 423.31s: "bounds. More interestingly, you could ask, is this reconfiguration graph connected, right? Or can I ..."
+
+Retrieving answer... (this may take a moment)
+
+📝 Processing query: How to know if the reconfiguration graph connected?
+Rewritten from 'How to know if the reconfiguration graph connected?' to 'How to know if the reconfiguration graph connected?' in 7.89s
+
+🔍 Results per retrieval system:
+
+=== FAISS_TEXT ===
+✓ Found segment at time 864.54s-873.48s
+  Score: 0.7770
+
+📑 Retrieved text:
+--------------------------------------------------
+We can think about the reconfiguration graph under the token jumping adjacency. And we can think about the reconfiguration graph under the token sliding adjacency.
+--------------------------------------------------
+🧠 Generating answer with faiss_text...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 165 characters, 25 words
+Question: How to know if the reconfiguration graph connected?
+--------------------------------------------------------------------------------
+✨ Generated answer in 7.03s: Jumping adjacency
+--------------------------------------------------------------------------------
+
+✨ faiss_text answer: Jumping adjacency
+⏱️ Timespan: 864.54s - 873.48s
+
+=== FAISS_IMAGE ===
+✓ Found segment at time 366.72s-377.86s
+  Score: 0.3581
+
+📑 Retrieved text:
+--------------------------------------------------
+No text available for this segment
+--------------------------------------------------
+🧠 Generating answer with faiss_image...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 36 characters, 6 words
+Question: How to know if the reconfiguration graph connected?
+--------------------------------------------------------------------------------
+✨ Generated answer in 12.77s: No text available for this segment
+--------------------------------------------------------------------------------
+
+✨ faiss_image answer: No text available for this segment
+⏱️ Timespan: 366.72s - 377.86s
+
+=== FAISS_FUSION ===
+Query type: Visual
+Weights: Text 0.30, Image 0.70
+✓ Found segment at time 366.72s-377.86s
+  Score: 0.7000
+
+📑 Retrieved text:
+--------------------------------------------------
+if you're more comfortable thinking about states, the states of the game. So now we're going to move the whole graph into the empty square. Now, given this graph, the reconfiguration graph, there are tons of very interesting
+--------------------------------------------------
+🧠 Generating answer with faiss_fusion...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 226 characters, 38 words
+Question: How to know if the reconfiguration graph connected?
+--------------------------------------------------------------------------------
+✨ Generated answer in 28.78s: if you're more comfortable thinking about states, the states of the game. So now we're going to move the whole graph into the empty square. Now, given this graph, the reconfiguration graph, there are tons of very interesting
+--------------------------------------------------------------------------------
+
+✨ faiss_fusion answer: if you're more comfortable thinking about states, the states of the game. So now we're going to move the whole graph into the empty square. Now, given this graph, the reconfiguration graph, there are tons of very interesting
+⏱️ Timespan: 366.72s - 377.86s
+
+=== TFIDF ===
+✓ Found segment at time 410.06s-423.31s
+  Score: 0.3210
+
+📑 Retrieved text:
+--------------------------------------------------
+bounds. More interestingly, you could ask, is this reconfiguration graph connected, right? Or can I reach any state starting from any other state by a sequence of legal moves?
+--------------------------------------------------
+🧠 Generating answer with tfidf...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 177 characters, 29 words
+Question: How to know if the reconfiguration graph connected?
+--------------------------------------------------------------------------------
+✨ Generated answer in 12.66s: can I reach any state starting from any other state by a sequence of legal moves
+--------------------------------------------------------------------------------
+
+✨ tfidf answer: can I reach any state starting from any other state by a sequence of legal moves
+⏱️ Timespan: 410.06s - 423.31s
+
+=== BM25 ===
+✓ Found segment at time 423.39s-431.87s
+  Score: 9.0725
+
+📑 Retrieved text:
+--------------------------------------------------
+And as I told you before, for the 15 puzzle, the reconfiguration graph is definitely not connected, because there was no way
+--------------------------------------------------
+🧠 Generating answer with bm25...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 126 characters, 22 words
+Question: How to know if the reconfiguration graph connected?
+--------------------------------------------------------------------------------
+✨ Generated answer in 5.29s: there was no way
+--------------------------------------------------------------------------------
+
+✨ bm25 answer: there was no way
+⏱️ Timespan: 423.39s - 431.87s
+
+**************************************************
+RESULTS SUMMARY
+**************************************************
+
+--- FAISS_TEXT ---
+ANSWER: Jumping adjacency
+TIMESPAN: 864.54s - 873.48s
+✗ NO MATCH with ground truth
+
+--- FAISS_IMAGE ---
+ANSWER: No text available for this segment
+TIMESPAN: 366.72s - 377.86s
+✗ NO MATCH with ground truth
+
+--- FAISS_FUSION ---
+ANSWER: if you're more comfortable thinking about states, the states of the game. So now we're going to move the whole graph into the empty square. Now, given this graph, the reconfiguration graph, there are tons of very interesting
+TIMESPAN: 366.72s - 377.86s
+✗ NO MATCH with ground truth
+
+--- TFIDF ---
+ANSWER: can I reach any state starting from any other state by a sequence of legal moves
+TIMESPAN: 410.06s - 423.31s
+✓ MATCH with ground truth at 410.06s-423.31s
+
+--- BM25 ---
+ANSWER: there was no way
+TIMESPAN: 423.39s - 431.87s
+✗ NO MATCH with ground truth
+**************************************************
+
+==================================================
+COMPLETED QUESTION 10/10
+==================================================
+
+
+===== Testing with QA set from /content/drive/MyDrive/LLMs and RAG Systems/Assignment_5/Dataset/Questions/Second_set.json =====
+
+Found 5 unanswerable questions
+Testing 5 questions
+
+
+==================================================
+PROCESSING QUESTION 1/5
+==================================================
+
+Question: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?
+
+This question is expected to be unanswerable based on the video content
+
+Retrieving answer... (this may take a moment)
+
+📝 Processing query: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?
+Rewritten from 'For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?' to 'For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?' in 16.46s
+
+🔍 Results per retrieval system:
+
+=== FAISS_TEXT ===
+✓ Found segment at time 1878.82s-1886.78s
+  Score: 0.8251
+
+📑 Retrieved text:
+--------------------------------------------------
+So the first result that we will go over is this W hardness on C4 free graphs. Right? For both token sliding and token jumping.
+--------------------------------------------------
+🧠 Generating answer with faiss_text...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 129 characters, 25 words
+Question: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?
+--------------------------------------------------------------------------------
+✨ Generated answer in 18.77s: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?
+--------------------------------------------------------------------------------
+
+✨ faiss_text answer: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?
+⏱️ Timespan: 1878.82s - 1886.78s
+
+=== FAISS_IMAGE ===
+✓ Found segment at time 805.54s-830.43s
+  Score: 0.3139
+
+📑 Retrieved text:
+--------------------------------------------------
+No text available for this segment
+--------------------------------------------------
+🧠 Generating answer with faiss_image...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 36 characters, 6 words
+Question: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?
+--------------------------------------------------------------------------------
+✨ Generated answer in 17.52s: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work
+--------------------------------------------------------------------------------
+
+✨ faiss_image answer: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work
+⏱️ Timespan: 805.54s - 830.43s
+
+=== FAISS_FUSION ===
+Query type: Visual
+Weights: Text 0.30, Image 0.70
+✓ Found segment at time 805.54s-830.43s
+  Score: 0.7000
+
+📑 Retrieved text:
+--------------------------------------------------
+Assuming that it doesn't have a token and that you maintain an independent set at all times. So, for example, in this example that I have here. It would be perfectly okay to take this token here and jump it to this vertex here. Or I could also take this token here and jump it to this vertex here.
+--------------------------------------------------
+🧠 Generating answer with faiss_fusion...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 299 characters, 59 words
+Question: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?
+--------------------------------------------------------------------------------
+✨ Generated answer in 18.92s: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?
+--------------------------------------------------------------------------------
+
+✨ faiss_fusion answer: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?
+⏱️ Timespan: 805.54s - 830.43s
+
+=== TFIDF ===
+✓ Found segment at time 1395.52s-1417.85s
+  Score: 0.2163
+
+📑 Retrieved text:
+--------------------------------------------------
+For split graphs and chordal graphs, they also behave extremely differently. Token sliding and token jumping, right? So they are token sliding is PSPACE complete on split graphs and chordal graphs while token jumping is polynomial time. And that is some of the reasons why we feel that token sliding is harder usually than token jumping,
+--------------------------------------------------
+🧠 Generating answer with tfidf...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 339 characters, 56 words
+Question: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?
+--------------------------------------------------------------------------------
+✨ Generated answer in 19.44s: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?
+--------------------------------------------------------------------------------
+
+✨ tfidf answer: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?
+⏱️ Timespan: 1395.52s - 1417.85s
+
+=== BM25 ===
+✓ Found segment at time 1395.52s-1417.85s
+  Score: 7.5925
+
+📑 Retrieved text:
+--------------------------------------------------
+For split graphs and chordal graphs, they also behave extremely differently. Token sliding and token jumping, right? So they are token sliding is PSPACE complete on split graphs and chordal graphs while token jumping is polynomial time. And that is some of the reasons why we feel that token sliding is harder usually than token jumping,
+--------------------------------------------------
+🧠 Generating answer with bm25...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 339 characters, 56 words
+Question: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?
+--------------------------------------------------------------------------------
+✨ Generated answer in 20.32s: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?
+--------------------------------------------------------------------------------
+
+✨ bm25 answer: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?
+⏱️ Timespan: 1395.52s - 1417.85s
+
+**************************************************
+RESULTS SUMMARY
+**************************************************
+
+--- FAISS_TEXT ---
+ANSWER: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?
+TIMESPAN: 1878.82s - 1886.78s
+
+--- FAISS_IMAGE ---
+ANSWER: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work
+TIMESPAN: 805.54s - 830.43s
+
+--- FAISS_FUSION ---
+ANSWER: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?
+TIMESPAN: 805.54s - 830.43s
+
+--- TFIDF ---
+ANSWER: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?
+TIMESPAN: 1395.52s - 1417.85s
+
+--- BM25 ---
+ANSWER: For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?
+TIMESPAN: 1395.52s - 1417.85s
+**************************************************
+
+==================================================
+COMPLETED QUESTION 1/5
+==================================================
+
+
+==================================================
+PROCESSING QUESTION 2/5
+==================================================
+
+Question: What is the complexity of the token-sliding reachability problem when restricted to planar bipartite graphs?
+
+This question is expected to be unanswerable based on the video content
+
+Retrieving answer... (this may take a moment)
+
+📝 Processing query: What is the complexity of the token-sliding reachability problem when restricted to planar bipartite graphs?
+Rewritten from 'What is the complexity of the token-sliding reachability problem when restricted to planar bipartite graphs?' to 'What is the complexity of the token-sliding reachability problem when restricted to planar bipartite graphs?' in 14.23s
+
+🔍 Results per retrieval system:
+
+=== FAISS_TEXT ===
+✓ Found segment at time 1524.02s-1532.46s
+  Score: 0.8148
+
+📑 Retrieved text:
+--------------------------------------------------
+parameterized by the number of tokens on bipartite graphs is W1 hard. We were not able to answer the question for token jumping.
+--------------------------------------------------
+🧠 Generating answer with faiss_text...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 130 characters, 23 words
+Question: What is the complexity of the token-sliding reachability problem when restricted to planar bipartite graphs?
+--------------------------------------------------------------------------------
+✨ Generated answer in 5.42s: W1 hard
+--------------------------------------------------------------------------------
+
+✨ faiss_text answer: W1 hard
+⏱️ Timespan: 1524.02s - 1532.46s
+
+=== FAISS_IMAGE ===
+✓ Found segment at time 585.40s-598.47s
+  Score: 0.3052
+
+📑 Retrieved text:
+--------------------------------------------------
+No text available for this segment
+--------------------------------------------------
+🧠 Generating answer with faiss_image...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 36 characters, 6 words
+Question: What is the complexity of the token-sliding reachability problem when restricted to planar bipartite graphs?
+--------------------------------------------------------------------------------
+✨ Generated answer in 15.91s: complexity of the token-sliding reachability problem when restricted to planar bipartite graphs
+--------------------------------------------------------------------------------
+
+✨ faiss_image answer: complexity of the token-sliding reachability problem when restricted to planar bipartite graphs
+⏱️ Timespan: 585.40s - 598.47s
+
+=== FAISS_FUSION ===
+Query type: Visual
+Weights: Text 0.30, Image 0.70
+✓ Found segment at time 585.40s-598.47s
+  Score: 0.7000
+
+📑 Retrieved text:
+--------------------------------------------------
+questions. So all of you here are familiar with the K-SAT problem. So you're given a Boolean formula and you want to know if you can satisfy this formula by assigning values to the variables.
+--------------------------------------------------
+🧠 Generating answer with faiss_fusion...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 193 characters, 35 words
+Question: What is the complexity of the token-sliding reachability problem when restricted to planar bipartite graphs?
+--------------------------------------------------------------------------------
+✨ Generated answer in 65.56s: K-SAT problem. So you're given a Boolean formula and you want to know if you can satisfy this formula by assigning values to the variables. So you're given a Boolean formula and you want to know if you can satisfy this formula by assigning values to the variables. So you're given a Boolean formula and you want to know if you can satisfy this formula by assigning values to the variables. So you're given a Boolean formula and you want to know
+--------------------------------------------------------------------------------
+
+✨ faiss_fusion answer: K-SAT problem. So you're given a Boolean formula and you want to know if you can satisfy this formula by assigning values to the variables. So you're given a Boolean formula and you want to know if you can satisfy this formula by assigning values to the variables. So you're given a Boolean formula and you want to know if you can satisfy this formula by assigning values to the variables. So you're given a Boolean formula and you want to know
+⏱️ Timespan: 585.40s - 598.47s
+
+=== TFIDF ===
+✓ Found segment at time 1557.72s-1568.15s
+  Score: 0.2650
+
+📑 Retrieved text:
+--------------------------------------------------
+okay, so, so from bipartite graphs, how can I go to other classes of graphs? And see where token jumping becomes hard or easy.
+--------------------------------------------------
+🧠 Generating answer with tfidf...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 128 characters, 24 words
+Question: What is the complexity of the token-sliding reachability problem when restricted to planar bipartite graphs?
+--------------------------------------------------------------------------------
+✨ Generated answer in 22.04s: token-sliding reachability problem when restricted to planar bipartite graphs
+--------------------------------------------------------------------------------
+
+✨ tfidf answer: token-sliding reachability problem when restricted to planar bipartite graphs
+⏱️ Timespan: 1557.72s - 1568.15s
+
+=== BM25 ===
+✓ Found segment at time 1467.02s-1478.26s
+  Score: 9.2894
+
+📑 Retrieved text:
+--------------------------------------------------
+When we started working on this problem, our initial aim was to basically study the parameterized complexity of token sliding and token jumping on bipartite graphs,
+--------------------------------------------------
+🧠 Generating answer with bm25...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 166 characters, 26 words
+Question: What is the complexity of the token-sliding reachability problem when restricted to planar bipartite graphs?
+--------------------------------------------------------------------------------
+✨ Generated answer in 15.13s: parameterized complexity
+--------------------------------------------------------------------------------
+
+✨ bm25 answer: parameterized complexity
+⏱️ Timespan: 1467.02s - 1478.26s
+
+**************************************************
+RESULTS SUMMARY
+**************************************************
+
+--- FAISS_TEXT ---
+ANSWER: W1 hard
+TIMESPAN: 1524.02s - 1532.46s
+
+--- FAISS_IMAGE ---
+ANSWER: complexity of the token-sliding reachability problem when restricted to planar bipartite graphs
+TIMESPAN: 585.40s - 598.47s
+
+--- FAISS_FUSION ---
+ANSWER: K-SAT problem. So you're given a Boolean formula and you want to know if you can satisfy this formula by assigning values to the variables. So you're given a Boolean formula and you want to know if you can satisfy this formula by assigning values to the variables. So you're given a Boolean formula and you want to know if you can satisfy this formula by assigning values to the variables. So you're given a Boolean formula and you want to know
+TIMESPAN: 585.40s - 598.47s
+
+--- TFIDF ---
+ANSWER: token-sliding reachability problem when restricted to planar bipartite graphs
+TIMESPAN: 1557.72s - 1568.15s
+
+--- BM25 ---
+ANSWER: parameterized complexity
+TIMESPAN: 1467.02s - 1478.26s
+**************************************************
+
+==================================================
+COMPLETED QUESTION 2/5
+==================================================
+
+
+==================================================
+PROCESSING QUESTION 3/5
+==================================================
+
+Question: What is the current best lower bound on the minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs?
+
+This question is expected to be unanswerable based on the video content
+
+Retrieving answer... (this may take a moment)
+
+📝 Processing query: What is the current best lower bound on the minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs?
+Rewritten from 'What is the current best lower bound on the minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs?' to 'What is the current best lower bound on the minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs?' in 17.44s
+Query truncated for CLIP: What is the current best lower bound on the minimum number of tokens needed to create a W1-hard instance of
+
+🔍 Results per retrieval system:
+
+=== FAISS_TEXT ===
+✓ Found segment at time 3057.54s-3071.27s
+  Score: 0.7888
+
+📑 Retrieved text:
+--------------------------------------------------
+Is that is that very critical for the difficulty? Or the easiness of the problem? Well, you have to be careful how you define that because in token sliding, sliding tokens cannot leave the graph.
+--------------------------------------------------
+🧠 Generating answer with faiss_text...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 197 characters, 35 words
+Question: What is the current best lower bound on the minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs?
+--------------------------------------------------------------------------------
+✨ Generated answer in 20.08s: minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs
+--------------------------------------------------------------------------------
+
+✨ faiss_text answer: minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs
+⏱️ Timespan: 3057.54s - 3071.27s
+
+=== FAISS_IMAGE ===
+✓ Found segment at time 2513.82s-2522.62s
+  Score: 0.2853
+
+📑 Retrieved text:
+--------------------------------------------------
+No text available for this segment
+--------------------------------------------------
+🧠 Generating answer with faiss_image...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 36 characters, 6 words
+Question: What is the current best lower bound on the minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs?
+--------------------------------------------------------------------------------
+✨ Generated answer in 19.72s: minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs
+--------------------------------------------------------------------------------
+
+✨ faiss_image answer: minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs
+⏱️ Timespan: 2513.82s - 2522.62s
+
+=== FAISS_FUSION ===
+Query type: Visual
+Weights: Text 0.30, Image 0.70
+✓ Found segment at time 2513.82s-2522.62s
+  Score: 0.7000
+
+📑 Retrieved text:
+--------------------------------------------------
+So the idea comes from, from has been used before. And it's, it's what we call the buffer technique for the token jumping problem. And,
+--------------------------------------------------
+🧠 Generating answer with faiss_fusion...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 137 characters, 25 words
+Question: What is the current best lower bound on the minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs?
+--------------------------------------------------------------------------------
+✨ Generated answer in 20.74s: minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs
+--------------------------------------------------------------------------------
+
+✨ faiss_fusion answer: minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs
+⏱️ Timespan: 2513.82s - 2522.62s
+
+=== TFIDF ===
+✓ Found segment at time 2303.82s-2315.75s
+  Score: 0.2391
+
+📑 Retrieved text:
+--------------------------------------------------
+Right? So you can make these edges, subdivide them as many times as needed, add as many tokens as needed to maintain all the properties that we need,
+--------------------------------------------------
+🧠 Generating answer with tfidf...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 151 characters, 28 words
+Question: What is the current best lower bound on the minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs?
+--------------------------------------------------------------------------------
+✨ Generated answer in 19.50s: minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs
+--------------------------------------------------------------------------------
+
+✨ tfidf answer: minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs
+⏱️ Timespan: 2303.82s - 2315.75s
+
+=== BM25 ===
+✓ Found segment at time 1479.02s-1489.36s
+  Score: 10.9210
+
+📑 Retrieved text:
+--------------------------------------------------
+using the parameter K number of tokens. Right? Because remember, we saw that token sliding is PSPACE complete on bipartite graphs and token jumping is,
+--------------------------------------------------
+🧠 Generating answer with bm25...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 153 characters, 25 words
+Question: What is the current best lower bound on the minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs?
+--------------------------------------------------------------------------------
+✨ Generated answer in 16.56s: minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs
+--------------------------------------------------------------------------------
+
+✨ bm25 answer: minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs
+⏱️ Timespan: 1479.02s - 1489.36s
+
+**************************************************
+RESULTS SUMMARY
+**************************************************
+
+--- FAISS_TEXT ---
+ANSWER: minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs
+TIMESPAN: 3057.54s - 3071.27s
+
+--- FAISS_IMAGE ---
+ANSWER: minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs
+TIMESPAN: 2513.82s - 2522.62s
+
+--- FAISS_FUSION ---
+ANSWER: minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs
+TIMESPAN: 2513.82s - 2522.62s
+
+--- TFIDF ---
+ANSWER: minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs
+TIMESPAN: 2303.82s - 2315.75s
+
+--- BM25 ---
+ANSWER: minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs
+TIMESPAN: 1479.02s - 1489.36s
+**************************************************
+
+==================================================
+COMPLETED QUESTION 3/5
+==================================================
+
+
+==================================================
+PROCESSING QUESTION 4/5
+==================================================
+
+Question: What explicit FPT running-time bound f(K)·n^{O(1)} does the kernelization for token jumping on C₃,C₄-free graphs achieve?
+
+This question is expected to be unanswerable based on the video content
+
+Retrieving answer... (this may take a moment)
+
+📝 Processing query: What explicit FPT running-time bound f(K)·n^{O(1)} does the kernelization for token jumping on C₃,C₄-free graphs achieve?
+Rewritten from 'What explicit FPT running-time bound f(K)·n^{O(1)} does the kernelization for token jumping on C₃,C₄-free graphs achieve?' to 'What explicit FPT running-time bound does the kernelization for token jumping on C3,C4-free graphs achieve?' in 19.28s
+🔄 Rewritten query: What explicit FPT running-time bound does the kernelization for token jumping on C3,C4-free graphs achieve?
+
+🔍 Results per retrieval system:
+
+=== FAISS_TEXT ===
+✓ Found segment at time 1598.42s-1607.15s
+  Score: 0.8096
+
+📑 Retrieved text:
+--------------------------------------------------
+Now, if you exclude C3 and C4, it turns out that token jumping becomes FPT, has a order K squared kernel,
+--------------------------------------------------
+🧠 Generating answer with faiss_text...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 107 characters, 21 words
+Question: What explicit FPT running-time bound does the kernelization for token jumping on C3,C4-free graphs achieve?
+--------------------------------------------------------------------------------
+✨ Generated answer in 6.74s: order K squared kernel
+--------------------------------------------------------------------------------
+
+✨ faiss_text answer: order K squared kernel
+⏱️ Timespan: 1598.42s - 1607.15s
+
+=== FAISS_IMAGE ===
+✓ Found segment at time 2522.82s-2528.75s
+  Score: 0.3089
+
+📑 Retrieved text:
+--------------------------------------------------
+No text available for this segment
+--------------------------------------------------
+🧠 Generating answer with faiss_image...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 36 characters, 6 words
+Question: What explicit FPT running-time bound does the kernelization for token jumping on C3,C4-free graphs achieve?
+--------------------------------------------------------------------------------
+✨ Generated answer in 15.74s: kernelization for token jumping on C3,C4-free graphs achieves
+--------------------------------------------------------------------------------
+
+✨ faiss_image answer: kernelization for token jumping on C3,C4-free graphs achieves
+⏱️ Timespan: 2522.82s - 2528.75s
+
+=== FAISS_FUSION ===
+Query type: Visual
+Weights: Text 0.30, Image 0.70
+✓ Found segment at time 2522.82s-2528.75s
+  Score: 0.7000
+
+📑 Retrieved text:
+--------------------------------------------------
+and then tuition behind the buffer technique is very simple. So if I have S union T, but somewhere, in the graph,
+--------------------------------------------------
+🧠 Generating answer with faiss_fusion...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 115 characters, 22 words
+Question: What explicit FPT running-time bound does the kernelization for token jumping on C3,C4-free graphs achieve?
+--------------------------------------------------------------------------------
+✨ Generated answer in 8.29s: C3,C4-free graphs
+--------------------------------------------------------------------------------
+
+✨ faiss_fusion answer: C3,C4-free graphs
+⏱️ Timespan: 2522.82s - 2528.75s
+
+=== TFIDF ===
+✓ Found segment at time 1598.42s-1607.15s
+  Score: 0.2635
+
+📑 Retrieved text:
+--------------------------------------------------
+Now, if you exclude C3 and C4, it turns out that token jumping becomes FPT, has a order K squared kernel,
+--------------------------------------------------
+🧠 Generating answer with tfidf...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 107 characters, 21 words
+Question: What explicit FPT running-time bound does the kernelization for token jumping on C3,C4-free graphs achieve?
+--------------------------------------------------------------------------------
+✨ Generated answer in 6.52s: order K squared kernel
+--------------------------------------------------------------------------------
+
+✨ tfidf answer: order K squared kernel
+⏱️ Timespan: 1598.42s - 1607.15s
+
+=== BM25 ===
+✓ Found segment at time 1598.42s-1607.15s
+  Score: 11.0125
+
+📑 Retrieved text:
+--------------------------------------------------
+Now, if you exclude C3 and C4, it turns out that token jumping becomes FPT, has a order K squared kernel,
+--------------------------------------------------
+🧠 Generating answer with bm25...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 107 characters, 21 words
+Question: What explicit FPT running-time bound does the kernelization for token jumping on C3,C4-free graphs achieve?
+--------------------------------------------------------------------------------
+✨ Generated answer in 5.95s: order K squared kernel
+--------------------------------------------------------------------------------
+
+✨ bm25 answer: order K squared kernel
+⏱️ Timespan: 1598.42s - 1607.15s
+
+**************************************************
+RESULTS SUMMARY
+**************************************************
+
+--- FAISS_TEXT ---
+ANSWER: order K squared kernel
+TIMESPAN: 1598.42s - 1607.15s
+
+--- FAISS_IMAGE ---
+ANSWER: kernelization for token jumping on C3,C4-free graphs achieves
+TIMESPAN: 2522.82s - 2528.75s
+
+--- FAISS_FUSION ---
+ANSWER: C3,C4-free graphs
+TIMESPAN: 2522.82s - 2528.75s
+
+--- TFIDF ---
+ANSWER: order K squared kernel
+TIMESPAN: 1598.42s - 1607.15s
+
+--- BM25 ---
+ANSWER: order K squared kernel
+TIMESPAN: 1598.42s - 1607.15s
+**************************************************
+
+==================================================
+COMPLETED QUESTION 4/5
+==================================================
+
+
+==================================================
+PROCESSING QUESTION 5/5
+==================================================
+
+Question: What is the complexity of computing the shortest path length between two independent sets on a bipartite graph?
+
+This question is expected to be unanswerable based on the video content
+
+Retrieving answer... (this may take a moment)
+
+📝 Processing query: What is the complexity of computing the shortest path length between two independent sets on a bipartite graph?
+Rewritten from 'What is the complexity of computing the shortest path length between two independent sets on a bipartite graph?' to 'What is the complexity of computing the shortest path length between two independent sets on a bipartite graph?' in 13.18s
+
+🔍 Results per retrieval system:
+
+=== FAISS_TEXT ===
+✓ Found segment at time 1452.42s-1458.97s
+  Score: 0.7200
+
+📑 Retrieved text:
+--------------------------------------------------
+Another parameter would be the length of the sequence. Like how many steps does it take to go from one independent set,
+--------------------------------------------------
+🧠 Generating answer with faiss_text...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 121 characters, 22 words
+Question: What is the complexity of computing the shortest path length between two independent sets on a bipartite graph?
+--------------------------------------------------------------------------------
+✨ Generated answer in 17.57s: 2. Be concise and specific, focusing only on what is mentioned in the context. 3. Do not use knowledge from outside the provided context.
+--------------------------------------------------------------------------------
+
+✨ faiss_text answer: 2. Be concise and specific, focusing only on what is mentioned in the context. 3. Do not use knowledge from outside the provided context.
+⏱️ Timespan: 1452.42s - 1458.97s
+
+=== FAISS_IMAGE ===
+✓ Found segment at time 2756.10s-2766.08s
+  Score: 0.3222
+
+📑 Retrieved text:
+--------------------------------------------------
+No text available for this segment
+--------------------------------------------------
+🧠 Generating answer with faiss_image...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 36 characters, 6 words
+Question: What is the complexity of computing the shortest path length between two independent sets on a bipartite graph?
+--------------------------------------------------------------------------------
+✨ Generated answer in 13.66s: complexity of computing the shortest path length between two independent sets on a bipartite graph
+--------------------------------------------------------------------------------
+
+✨ faiss_image answer: complexity of computing the shortest path length between two independent sets on a bipartite graph
+⏱️ Timespan: 2756.10s - 2766.08s
+
+=== FAISS_FUSION ===
+Query type: Visual
+Weights: Text 0.30, Image 0.70
+✓ Found segment at time 2756.10s-2766.08s
+  Score: 0.7000
+
+📑 Retrieved text:
+--------------------------------------------------
+All right? So how about the second part of the claim? So now what happens if we have... We have a C3, C4 free J that has a vertex of degree 3K?
+--------------------------------------------------
+🧠 Generating answer with faiss_fusion...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 145 characters, 32 words
+Question: What is the complexity of computing the shortest path length between two independent sets on a bipartite graph?
+--------------------------------------------------------------------------------
+✨ Generated answer in 12.71s: C3, C4 free J that has a vertex of degree 3K
+--------------------------------------------------------------------------------
+
+✨ faiss_fusion answer: C3, C4 free J that has a vertex of degree 3K
+⏱️ Timespan: 2756.10s - 2766.08s
+
+=== TFIDF ===
+✓ Found segment at time 461.61s-468.57s
+  Score: 0.2143
+
+📑 Retrieved text:
+--------------------------------------------------
+But these give a more well- effectiveness question and could tell you like what would be the worst possible shortest path to reach a target configuration
+--------------------------------------------------
+🧠 Generating answer with tfidf...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 155 characters, 26 words
+Question: What is the complexity of computing the shortest path length between two independent sets on a bipartite graph?
+--------------------------------------------------------------------------------
+✨ Generated answer in 17.07s: 2. Be concise and specific, focusing only on what is mentioned in the context. 3. Do not use knowledge from outside the provided context.
+--------------------------------------------------------------------------------
+
+✨ tfidf answer: 2. Be concise and specific, focusing only on what is mentioned in the context. 3. Do not use knowledge from outside the provided context.
+⏱️ Timespan: 461.61s - 468.57s
+
+=== BM25 ===
+✓ Found segment at time 764.54s-773.46s
+  Score: 11.0058
+
+📑 Retrieved text:
+--------------------------------------------------
+So how can you transform this problem into a reconfiguration problem? Again, now I'm given a graph, two independent sets of the graph.
+--------------------------------------------------
+🧠 Generating answer with bm25...
+
+📝 Answer generation prompt:
+--------------------------------------------------------------------------------
+Context length: 136 characters, 23 words
+Question: What is the complexity of computing the shortest path length between two independent sets on a bipartite graph?
+--------------------------------------------------------------------------------
+✨ Generated answer in 17.05s: The complexity of computing the shortest path length between two independent sets on a bipartite graph is
+--------------------------------------------------------------------------------
+
+✨ bm25 answer: The complexity of computing the shortest path length between two independent sets on a bipartite graph is
+⏱️ Timespan: 764.54s - 773.46s
+
+**************************************************
+RESULTS SUMMARY
+**************************************************
+
+--- FAISS_TEXT ---
+ANSWER: 2. Be concise and specific, focusing only on what is mentioned in the context. 3. Do not use knowledge from outside the provided context.
+TIMESPAN: 1452.42s - 1458.97s
+
+--- FAISS_IMAGE ---
+ANSWER: complexity of computing the shortest path length between two independent sets on a bipartite graph
+TIMESPAN: 2756.10s - 2766.08s
+
+--- FAISS_FUSION ---
+ANSWER: C3, C4 free J that has a vertex of degree 3K
+TIMESPAN: 2756.10s - 2766.08s
+
+--- TFIDF ---
+ANSWER: 2. Be concise and specific, focusing only on what is mentioned in the context. 3. Do not use knowledge from outside the provided context.
+TIMESPAN: 461.61s - 468.57s
+
+--- BM25 ---
+ANSWER: The complexity of computing the shortest path length between two independent sets on a bipartite graph is
+TIMESPAN: 764.54s - 773.46s
+**************************************************
+
+==================================================
+COMPLETED QUESTION 5/5
+==================================================
