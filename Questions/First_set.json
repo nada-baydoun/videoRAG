@@ -1,0 +1,150 @@
+{
+  "qa": [
+    {
+      "question": "Who is the student among the co-authors?",
+      "answer": [
+        {
+          "segment_id": 8,
+          "start_time": 101.0,
+          "end_time": 112.9090909090909,
+          "text": "And it's joint work with Valentin Barchet, Nicolas Bousquet, Clément Dallard, and Kyle Lomer, who is my master's student. All right."
+        }
+      ]
+    },
+    {
+      "question": "What is the 15-puzzle game?",
+      "answer": [
+        {
+          "segment_id": 18,
+          "start_time": 206.0,
+          "end_time": 219.9291338582677,
+          "text": "And the most common one that we use is the 15 puzzle game. So for those of you who don't know the 15 puzzle game, so you're given like a four by four grid and you have one empty square."
+        }
+      ]
+    },
+    {
+      "question": "How many tiles are in the 15-puzzle?",
+      "answer": [
+        {
+          "segment_id": 19,
+          "start_time": 220.0,
+          "end_time": 226.9375,
+          "text": "And basically you have all the remaining 15 squares are numbered from one to 15 and they come in some ordering."
+        }
+      ]
+    },
+    {
+      "question": "What is a reconfiguration graph?",
+      "answer": [
+        {
+          "segment_id": 26,
+          "start_time": 301.0,
+          "end_time": 310.9183673469388,
+          "text": "So what does that graph consist of? Well, we have one vertex or one node in this graph for each possible configuration of the puzzle."
+        }
+      ]
+    },
+    {
+      "question": "What is the PC301 workshop and how it is different from previous workshops?",
+      "answer": [
+        {
+          "segment_id": 93,
+          "start_time": 1000.54,
+          "end_time": 1016.474065934066,
+          "text": "Any questions at this point? I apologize for the small context which I am interrupting here. So this is just to announce for the PC301 workshop that will be happening in December end."
+        },
+        {
+          "segment_id": 94,
+          "start_time": 1016.54,
+          "end_time": 1025.48,
+          "text": "And this will be slightly different from the previous two workshops. First major difference. This will be online. Second is some advanced topics will be discussed."
+        },
+        {
+          "segment_id": 95,
+          "start_time": 1025.54,
+          "end_time": 1039.492380952381,
+          "text": "So anyone who intends to explore somewhat more complex topics in parameterized algorithms is invited to have a check. They can look at the website that has been shared on the chat."
+        },
+        {
+          "segment_id": 96,
+          "start_time": 1039.54,
+          "end_time": 1046.4733333333334,
+          "text": "And if you wish, you can register simply by filling a form that is linked at the bottom of the web page."
+        }
+      ]
+    },
+    {
+      "question": "What is the state space?",
+      "answer": [
+        {
+          "segment_id": 31,
+          "start_time": 354.64,
+          "end_time": 366.65926829268295,
+          "text": "12, or 15. And that gives us basically four neighbors of that vertex in the graph. Okay, and we call this whole graph the reconfiguration graph, or the state space,"
+        }
+      ]
+    },
+    {
+      "question": "What types of questions can you ask about the reconfiguration graph?",
+      "answer": [
+        {
+          "segment_id": 33,
+          "start_time": 377.92,
+          "end_time": 390.14618556701026,
+          "text": "questions that you can ask about it. There are structural questions and there are algorithmic questions. And these are typically the types of questions that we're interested in, in this area"
+        }
+      ]
+    },
+    {
+      "question": "Give one example of a structural question about the reconfiguration graph.",
+      "answer": [
+        {
+          "segment_id": 34,
+          "start_time": 390.22,
+          "end_time": 401.0748453608247,
+          "text": "of combinatorial reconfiguration. So a couple of examples of structural questions would be, well, the simplest one would be how big is this reconfiguration graph, right?"
+        }
+      ]
+    },
+    {
+      "question": "When moving into parameterized complexity, which parameters does he propose for studying token sliding and token jumping?",
+      "answer": [
+        {
+          "segment_id": 129,
+          "start_time": 1433.7199999999998,
+          "end_time": 1445.3559374999998,
+          "text": "And let's basically think about how you can parameterize those two problems, token jumping and token sliding. So there's the obvious parameter would be the number of tokens,"
+        },
+        {
+          "segment_id": 130,
+          "start_time": 1445.7199999999998,
+          "end_time": 1452.365945945946,
+          "text": "right? So one of the obvious parameters would be the number of tokens. So, so, and we're going to denote that by K."
+        },
+        {
+          "segment_id": 131,
+          "start_time": 1452.4199999999998,
+          "end_time": 1458.966153846154,
+          "text": "Another parameter would be the length of the sequence. Like how many steps does it take to go from one independent set,"
+        },
+        {
+          "segment_id": 132,
+          "start_time": 1459.62,
+          "end_time": 1465.8705050505048,
+          "text": "to the other. You can also obviously parameterize by a tree width or path width or any combination of the above."
+        }
+      ]
+    },
+    {
+      "question": "How to know if the reconfiguration graph connected?",
+      "answer": [
+        {
+          "segment_id": 36,
+          "start_time": 410.06,
+          "end_time": 423.3129411764706,
+          "text": "bounds. More interestingly, you could ask, is this reconfiguration graph connected, right? Or can I reach any state starting from any other state by a sequence of legal moves?"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "unanswerable": [
+    {
+      "question": "For exactly which values of p does token jumping remain W1-hard on Cp-free graphs according to the follow-up work?"
+    },
+    {
+      "question": "What is the complexity of the token-sliding reachability problem when restricted to planar bipartite graphs?"
+    },
+    {
+      "question": "What is the current best lower bound on the minimum number of tokens needed to create a W1-hard instance of token sliding on triangle-free graphs?"
+    },
+    {
+      "question": "What explicit FPT running-time bound f(K)·n^{O(1)} does the kernelization for token jumping on C₃,C₄-free graphs achieve?"
+    },
+    {
+      "question": "What is the complexity of computing the shortest path length between two independent sets on a bipartite graph?"
+    }
+  ]
+}
